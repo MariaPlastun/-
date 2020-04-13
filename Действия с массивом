@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите размерность массива: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            Console.WriteLine("Заполняем массив a");
+            for (int i = 0; i < n; i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            int max = PolMax(a, n);
+            if (max > 0)
+                Console.WriteLine("Максимальный положительный элемент массива: " + max);
+            else
+                Console.WriteLine("В массиве нет положительных элементов");
+            int pr = PrMas(a, n);
+            Console.WriteLine("Произведение элементов массива: " + pr);
+        }
+        public static int PolMax(int[] Mas, int n)
+        {
+            int max = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if ((Mas[i] > 0) && (Mas[i] > max))
+                max = Mas[i];
+            }
+           return max;
+        }
+        public static int PrMas(int[] Mas, int n)
+        {
+            int pr = 1;
+            for (int i = 0; i < n; i++)
+            pr *= Mas[i];
+          return pr;
+        }
+    }
+}
