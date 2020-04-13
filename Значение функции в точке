@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void f1(double x)
+{
+	cout << "Функция равна: " << (pow(x, 3) - 3 * x - 2 * (exp(-x)));
+}
+void f2(double x)
+{
+	cout << "Функция равна: " << (1 / (3 - cos(x)));
+}
+void f3(double x)
+{
+	((x < 0) && (x == 1)) ? cout << "Error" << endl : cout << "Функция равна: " << (pow(log(3) / log(x), 2)) <<endl;
+}
+void f4(double x)
+{
+	(x == 1) ? cout << "Error" << endl : cout << "Функция равна: " << (1 / (1 - x)) << endl;
+}
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	double x;
+	int func;
+	cout << "Выберите функцию" << endl;
+	cout << "1. f1(x)=x^3 - 3x - 2e^-x " << endl;
+	cout << "2. f2(x)=1/(3-cos x) " << endl;
+	cout << "3. f3(x)=(log(3)(x))^2 " << endl;
+	cout << "4. f4(x)=1/(1-x) " << endl;
+	cout << "Введите аргумент:";
+	cin >> x;
+	void(*funcs)(double x);
+	cout << "Введите номер функции: ";
+	cin >> func;
+	cout << endl;
+	switch (func)
+	{
+	case'1': funcs = f1; break;
+	case'2': funcs = f2; break;
+	case'3': funcs = f3; break;
+	default: funcs = f4; break;
+	}
+	(*funcs)(x);
+	return 0;
+	}
+
