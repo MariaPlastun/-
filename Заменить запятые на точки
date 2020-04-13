@@ -1,0 +1,13 @@
+var
+ s,s1:string;
+ i:integer;
+begin
+ writeln('Введите строку');
+ readln(s); 
+ s1:= 'STRING:';
+ insert(s1,s,1);
+ for i:= 1 to length(s) do
+ if s[i] = ',' then
+ s[i]:= '.';
+ writeln(s);
+end.
