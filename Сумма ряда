@@ -1,0 +1,23 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+double a(int n,double eps, double sum)
+{
+	sum = (n * n) * exp(-(sqrt(n)));
+	if (sum < eps)
+		return sum;
+	else
+		return sum + a(n + 1, eps, sum);
+}
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	int n = 1;
+	double sum = 0, eps;
+	cout << "Введите точность eps: ";
+	cin >> eps;
+	cout << "Сумма ряда с точностью eps: " << a(n, eps, sum) << endl;
+       return 0;
+}
