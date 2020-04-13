@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace ConsoleApp7
+{
+  class Program
+  {
+    public static void Main()
+    {
+      Console.WriteLine("Введите количество элементов массива");
+      int n = int.Parse(Console.ReadLine());
+      double[] a = new double[n];
+      Random rand = new Random();
+      int i = 0;
+         for (i = 0; i < n; ++i)
+           {
+              a[i] = rand.Next(-10, 100);
+              Console.Write("{0,4}", a[i]);
+           }
+      Console.WriteLine();
+      int k = 0;
+      Console.WriteLine(" Введите N");
+      double N = double.Parse(Console.ReadLine());
+        for (i = 0; i < n; ++i
+          {
+             if (a[i] > N)
+             k++;
+          }
+      Console.WriteLine("Количество чисел больших N: {0}", k);
+    }
+  }
+}
