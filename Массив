@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+double vvod_a(int n, int* a)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << "Введите " << i + 1 << "-й элемент массива: ";
+		cin >> *(a + i);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		cout << *(a + i) << "  ";
+	}
+	cout << endl;
+	return 0;
+}
+double max_a(int* a, int n)
+{
+	double max;
+	max = *(a + 0);
+	for (int i = 0; i < n; i++)
+	{
+		if (*(a + i) > max)
+			max = *(a + i);
+	}
+	return max;
+}
+double srotr_a(int* a, int n)
+{
+	double sum = 0;
+	double sr = 0;
+	int k = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(a + i) < 0)
+		{
+			sum += *(a + i);
+			k++;
+		}
+	}
+	if (k!=0)
+		return sr = sum / k;
+	else
+	    return 0;
+}
+int obr_a(int* a, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << *(a + (n - i - 1)) << "  ";
+	}
+	return 0;
+}
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int n;
+	cout << "Введите размерность массива: ";
+	cin >> n;
+	int* a = new int[n];
+	vvod_a(n, a);
+	cout << endl << "Максимальный элемент массива: " << (max_a(a, n)) << endl; 
+	srotr_a(a, n) == 0 ? cout << endl << "Отрицательных элементов нет" << endl : cout << endl << "Среднее арифметическое отрицательных элементов массива: " << (srotr_a(a, n)) << endl;
+	cout << endl;
+	(obr_a(a, n));
+}
