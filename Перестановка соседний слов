@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <clocale>
+#include<fstream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	ifstream in;
+	in.open("text.txt");
+	if (!in)
+	{
+		cout << "Ошибка" << endl;
+		exit(1);
+	}
+	char* s = new char[256];
+	while (!in.eof())
+	{
+		in.getline(s, sizeof(in));
+		char* s1 = new char[20];
+		char* s2 = new char[20];
+		int firstI = 0;
+		int c1 = 0;
+		int c2 = 0;
+		bool one = false;
+		for (int i = 0; i < 256; i++)
+		{
+			if (s[i] == ' ' || s[i] == '.')
+				one = true;
+			else
+			{
+				if (c1 == 0)
+					firstI = i;
+				if (!one)
+				{
+					s1[c1] = s[i];
+					c1++;
+				}
+				else
+				{
+					s2[c2] = s[i];
+					c2++;
+				}
+			}
+			if (c1 > 0 && c2 > 0 && (s[i] == ' ' || s[i] == '.'))
+			{
+				for (int j = firstI; j < firstI + c1 + c2 + 1; j++)
+				{
+					if (j < firstI + c2)
+						s[j] = s2[j - firstI];
+					else
+					{
+						if (j == firstI + c2)
+							s[j++] = ' ';
+						s[j] = s1[j - firstI - c2 - 1];
+					}
+				}
+				c1 = 0;
+				c2 = 0;
+				one = false;
+			}
+		}
+		cout << s;
+	}
+	in.close();
+	return 1;
+}
