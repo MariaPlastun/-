@@ -1,0 +1,64 @@
+const n = 5; 
+
+type 
+matrix = array [1..n, 1..n] of real; 
+arr = array [1..n] of real; 
+
+var 
+a:matrix; 
+C :arr; 
+sr: real; 
+
+procedure matr; 
+begin 
+//writeln ('Введите значения матрицы: '); 
+randomize; 
+for var i:= 1 to n do begin 
+for var j:= 1 to n do begin 
+{read (a[i,j]);} 
+a[i,j]:= random(100)-20; 
+end; 
+end; 
+end; 
+
+procedure write_matr; 
+begin 
+writeln ('Матрица: '); 
+for var i:= 1 to n do begin 
+for var j:= 1 to n do begin 
+write (a[i, j]:5); 
+end; 
+writeln; 
+end; 
+end; 
+
+procedure s_matx; 
+var k:integer;
+var sg:double;
+begin 
+k:=1;
+for var j:=1 to n do begin
+k:=0;sg:=1;
+for var i:=1 to n do begin 
+if a[i,j]>0 then begin
+inc(k);
+sg:=sg*a[i,j];
+end; 
+C[j]:=power(sg,(1/k));
+end;
+end; 
+end; 
+
+procedure arr_write; 
+begin 
+for var i:= 1 to n do 
+writeln (C[i]:12:3); 
+end; 
+
+begin 
+matr; 
+write_matr; 
+s_matx; 
+writeln ('Массив С среднегеометрических значений положительных элементов массива: '); 
+arr_write; 
+end.
