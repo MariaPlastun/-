@@ -1,0 +1,46 @@
+#include <iostream>
+
+using namespace std;
+
+struct Data
+{
+	int day;
+	int month;
+	int year;
+};
+void week(Data x)
+{
+	int otvet;
+	if ((x.month > 12) || (x.month < 1) || (x.year < 1) || (x.day > 31) || (x.day < 1) || ((x.year % 4 == 0) && (x.month == 2) && (x.day > 29)) || ((x.year % 4 !=0) && (x.month == 2) && (x.day > 28)))
+	{
+		cout << "ОШИБКА!" << endl;
+	}
+	else
+	{
+		otvet = ((x.month - 1) * 4 * 7 + x.day) / 7;
+		int kop = otvet;
+		switch ((otvet = otvet % 100) > 19 ? (otvet % 10) : otvet)
+		{
+		case 1: cout << "Oтвет: " << kop << " неделя с начала года" << endl; break;
+		case 2: case 3: case 4: cout << "Oтвет: " << kop << " недели с начала года" << endl; break;
+		case 0: case 5:case 6: case 7: case 8: case 9: cout << "Oтвет: " << kop << " недель с начала года" << endl; break;
+		default: cout << "Oтвет: " << kop << " недель с начала года" << endl; break;
+		}
+	}
+}
+void vvod(Data& x)
+{
+	cout << "Введите день: ";
+	cin >> x.day;
+	cout << "Введите месяц: ";
+	cin >> x.month;
+	cout << "Введите год: ";
+	cin >> x.year;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	Data x;
+	vvod(x);
+	week(x);
