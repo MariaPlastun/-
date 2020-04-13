@@ -1,0 +1,32 @@
+#include <iostream>
+#include <clocale>
+using namespace std;
+double g(double a, double &b)
+{
+   if ((2*a*b-a-b)>0)
+   return((pow(a, 2) - pow(b, 2))/(2*a*b-a-b))+(a+b)*sqrt((abs(a+b))/2);
+   else return 0;
+}
+double g1 (double * a, double * b)
+{
+    if ((2*(*a)*(*b)-(*a)-(*b))>0)
+    return((pow((*a), 2) - pow((*b), 2))/(2*(*a)*(*b)-(*a)-(*b)))+((*a)+(*b))*sqrt((abs((*a)+(*b)))/2);
+    else return 0;
+}
+double g(double a, double b)
+{
+   if ((2*a*b-a-b)>0)
+   return((pow(a, 2) - pow(b, 2))/(2*a*b-a-b))+(a+b)*sqrt((abs(a+b))/2);
+   else return 0;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    double s,t, F = 0.0;
+    cout << "Введитие значение s и t: ";
+    cin >> s >> t;
+            F = g(1.2, s) + g1(&t, &s) – g2(2*s - 1, s*t);
+        cout << "Результат: " << F;
+    return 0;
+}
